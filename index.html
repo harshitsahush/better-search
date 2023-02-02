@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Better Search</title>
+    <style>
+
+        *{
+            font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
+        }
+
+        .middle{
+            padding:20px;
+        }
+
+        .input-section{
+            padding:20px;
+            row-gap: 10px;
+        }
+
+        .section-heading{
+            font-size: 15px;
+        }
+
+        .section-option-area{
+            padding:20px;
+            display:flex;
+            column-gap: 20px;
+        }
+
+        .section-option{
+            border:1px solid black;
+            border-radius: 5px;
+            padding:10px;
+            cursor: pointer;
+        }
+
+        .active{
+            background-color: blue;
+        }
+
+    </style>
+    <script>
+        addEventListener("DOMContentLoaded", ()=>{
+
+            function deselect_all(e){                               //will deselct all the section-options in 'e'
+                
+            }
+
+            addEventListener("click", (e)=>{
+                if(e.target.classList.contains("section-option")){
+                    deselect_all(e.target.parentElement);           //will deselect all the elements
+                    e.target.classList.toggle("active");            //select only the desired element to ensure only one is selected at a time
+                }
+            });
+
+        });
+    </script>
+
+
+</head>
+<body>
+    <div class="main-container">
+        <div class="top">
+            <input type="text" class="input-box">
+            <button>Search</button>
+        </div>
+        <div class="middle">
+            <div class="website-input input-section">
+                <div class="section-heading">Website</div>
+                <div class="section-option-area">
+                    <div class="section-option">Reddit</div>
+                    <div class="section-option">Stack Overflow</div>
+                    <div class="section-option">Twitter</div>
+                </div>
+            </div>
+            <div class="time-input input-section">
+                <div class="section-heading">Time-Frame</div>
+                <div class="section-option-area">
+                    <div class="section-option">All Time</div>
+                    <div class="section-option">Past Day</div>
+                    <div class="section-option">Past Week</div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+
+        </div>
+    </div>
+</body>
+</html>
