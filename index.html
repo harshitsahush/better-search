@@ -64,14 +64,110 @@
 
     </style>
     <script>
-        //Google url format : https://www.google.com/search?q=taj+mahal+site%3Areddit.com+OR+site%3Aquora.com&as_qdr=d
+        //Google url format : https://www.google.com/search?q=phone+site:reddit.com+OR+site:quora.com+OR+site:facebook.com&as_qdr=d
         //as_qdr will be used to refer to the timeline
 
-        addEventListener("DOMContentLoaded", ()=>{
+        addEventListener("DOMContentLoaded", ()=>{  
 
-            addEventListener("click", (e)=>{
+            function uri_generator()
+            {
+                var uri = "https://www.google.com/search?q=";
+                var input_string = document.getElementsByClassName("input-box")[0].value;
+                uri = uri+input_string.replace(/ /g, "+");                           //replace all space with "+" and add into url
+
+                var active_parameters = document.getElementsByClassName("active");
+                let temp_flag1 = 0, temp_flag2 = 0;
+                
+                // to add all website active options
+                Array.from(active_parameters).forEach(element => {                           
+                    if(element.classList.contains("website-option")){
+                        let temp;
+                        switch (element.innerText){
+                            case "Reddit":
+                                temp = "reddit.com";
+                                break;
+                            
+                            case "Stack Overflow":
+                                temp = "stackoverflow.com";
+                                break;
+                             
+                            case "Twitter":
+                                temp = "twitter.com";
+                                break;
+
+                            case "Quora":
+                                temp = "quora.com";
+                                break;
+                        }
+
+                        if(temp_flag1==0){
+                            uri = uri + "+site:" + temp;
+                            temp_flag1 = 1;
+                        }
+                        else{                                                                   // before 1st website we dont have to add OR
+                            uri = uri + "+OR+site:" + temp;
+                        }
+                        
+                    }
+                });
+                          
+                // to add all file active options
+                Array.from(active_parameters).forEach(element => {                           
+                    if(element.classList.contains("file-option")){
+                        let temp;
+                        switch (element.innerText){
+                            case ".pdf":
+                                temp = "pdf";
+                                break;
+                            
+                            case ".docx":
+                                temp = "docx";
+                                break;
+                             
+                            case ".pptx":
+                                temp = "pptx";
+                                break;
+                        }
+
+                        if(temp_flag2==0){
+                            uri = uri + "+filetype:" + temp;
+                            temp_flag2 = 1;
+                        }
+                        else{                                                                   // before 1st filetype we dont have to add OR
+                            uri = uri + "+OR+filetype:" + temp;
+                        }
+                        
+                    }
+                });
+
+                // to add timeline of search results
+                // tag only has to be added if any option other than "all time" is selected
+                if(document.getElementsByName("time")[0].checked == false)
+                {
+                    let temp;
+                    Array.from(document.getElementsByName("time")).forEach(element => {
+                        if(element.checked == true)
+                        {
+                            temp = element.value;
+                        }
+                    });
+                    uri = uri + "&as_qdr=" + temp;
+                }
+                
+                return uri;
+            }
+
+            addEventListener("click", (e)=>{                            //to select boxes
                 if(e.target.classList.contains("section-option")){
                     e.target.classList.toggle("active");            
+                }
+            });
+
+            addEventListener("click", (e)=>{
+                if(e.target.classList.contains("submit-button")){
+                    var uri = uri_generator();                          //will collect data and form a url
+                    encodeURI(uri);                                     //will encode the url, i.e. replace special chars with escape sequences
+                    window.location.replace(uri);                       //will redirect to the constructed uri
                 }
             });
 
@@ -83,47 +179,45 @@
 <body>
     <div class="main-container">
         <div class="top">
-            <input type="text" class="input-box">
-            <button type="button" class="btn btn-primary">Search</button>
+            <input type="text" class="input-box" value="" placeholder="Your Search Query">
+            <button type="button" class="btn btn-primary submit-button">Search</button>
         </div>
         <div class="middle">
             <div class="website-input input-section">
                 <div class="section-heading">Website</div>
                 <div class="section-option-area">
-                    <div class="section-option">Reddit</div>
-                    <div class="section-option">Stack Overflow</div>
-                    <div class="section-option">Twitter</div>
-                    <div class="section-option">Quora</div>
+                    <div class="section-option website-option">Reddit</div>
+                    <div class="section-option website-option">Stack Overflow</div>
+                    <div class="section-option website-option">Twitter</div>
+                    <div class="section-option website-option">Quora</div>
                 </div>
             </div>
             <div class="time-input input-section">
                 <div class="section-heading">Time-Frame</div>
                 <div class="section-option-area">
                     <div class="time-option">
-                        <input type="radio" name="time" value="anytime" checked>Any Time
+                        <input type="radio" name="time" checked>Any Time
                     </div>
                     <div class="time-option">
-                        <input type="radio" name="time" value="pastday">Past Day
+                        <input type="radio" name="time" value="d">Past Day
                     </div>
                     <div class="time-option">
-                        <input type="radio" name="time" value="pastday">Past Week   
+                        <input type="radio" name="time" value="w">Past Week   
                     </div>
                     <div class="time-option">
-                        <input type="radio" name="time" value="pastmonth">Past Month
+                        <input type="radio" name="time" value="m">Past Month
                     </div>
                     <div class="time-option">
-                        <input type="radio" name="time" value="pastyear">Past Year
+                        <input type="radio" name="time" value="y">Past Year
                     </div>
                 </div>
             </div>
             <div class="format-input input-section">
                 <div class="section-heading">File Format</div>
                 <div class="section-option-area">
-                    <div class="section-option">.pdf</div>
-                    <div class="section-option">.docx</div>
-                    <div class="section-option">.pptx</div>
-                    <!-- <div class="section-option">Image</div>
-                    <div class="section-option">Video</div> -->
+                    <div class="section-option file-option">.pdf</div>
+                    <div class="section-option file-option">.docx</div>
+                    <div class="section-option file-option">.pptx</div>
                 </div>
             </div>
         </div>
