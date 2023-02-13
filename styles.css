@@ -1,0 +1,72 @@
+*{
+    font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+.body-container{
+    min-height: 100vh;
+    min-width: 100vw;
+    background-image: url("./media/layered-waves-haikei1.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-container{
+    margin: 20px auto;
+    padding:20px;
+    max-width:600px;
+    color: white;
+}
+
+.top{
+    margin: 0px auto;
+    width:max-content;
+}
+
+.middle{
+    padding:10px;
+}
+
+.input-section{
+    padding:10px;
+    row-gap: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-heading{
+    font-size: 15px;
+}
+
+.section-option-area{
+    padding:10px;
+    display:flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+}
+
+.section-option{
+    border:1px solid black;
+    border-radius: 5px;
+    padding:10px;
+    cursor: pointer;
+}
+
+.active{
+    background-color: rgb(121, 121, 166);
+}
+
+.input-box{
+    padding:5px;
+    border-radius: 5px;
+    border:1px solid grey;
+    width:300px;
+}
