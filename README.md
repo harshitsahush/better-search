@@ -13,6 +13,6 @@ A configurable Google Search with options to select specific websites, time-fram
 
 ## Screenshots
 
-![Desktop UI Screenshot](./screenshots/pc.png?raw=true "Desktop UI")
-![Mobile UI Screenshot](./screenshots/mobile.png height="1000")
+<img src="./screenshots/pc.png" alt="Desktop screenshot">
+<img src="./screenshots/mobile.png" alt="Mobile screenshot" height="1000">
 
