@@ -43,6 +43,7 @@ body{
     background-color:rgba(0, 16, 28, 0.8);
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    font-family: 'PT Sans Narrow', sans-serif;
 }
 
 .top{
