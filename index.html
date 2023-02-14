@@ -132,6 +132,23 @@
                 }
             });
 
+            //also fire the search function, when enter key is pressed on input field
+            document.getElementById("main-search-box").addEventListener("keydown", (e)=>{
+                if(e.code == "Enter")
+                {
+                    //will color the search tab red if empty
+                    if(document.getElementById("main-search-box").value == ""){
+                            document.getElementsByClassName("top")[0].style.backgroundColor = "rgba(255, 100, 100, 0.3)";
+                    } 
+                    else{
+                        var uri = uri_generator();                              //will collect data and form a url
+                        encodeURI(uri);                                         //will encode the url, i.e. replace special chars with escape sequences
+                        document.getElementById("main-search-box").value="";    //so that on coming back, box is empty
+                        window.location.href = uri;                             //will redirect to the constructed uri
+                    }
+                }
+            });
+
         });
     </script>
 
