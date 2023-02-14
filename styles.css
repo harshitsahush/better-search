@@ -13,26 +13,38 @@ body{
 .body-container{
     min-height: 100vh;
     min-width: 100vw;
-    background-image: url("./media/layered-waves-haikei1.svg");
+    background-image: url("./media/circle-scatter-haikei.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: #101010;
 }
 
 .main-container{
     margin: 20px auto;
     padding:20px;
-    max-width:600px;
+    max-width:700px;
     color: white;
+    box-sizing: border-box;
 }
 
 .top{
     margin: 0px auto;
-    width:max-content;
+    width:100%;
+    display:flex;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding:10px;
+    box-sizing: border-box;
+    column-gap: 3px;
+    border-radius: 25px;
 }
 
 .middle{
     padding:10px;
+    box-sizing: border-box;
+    background-color:rgba(35,34,41,0.4);
+    border-radius: 15px;
+    margin-top: 20px;
 }
 
 .input-section{
@@ -40,6 +52,7 @@ body{
     row-gap: 5px;
     display: flex;
     flex-direction: column;
+
 }
 
 .section-heading{
@@ -50,23 +63,46 @@ body{
     padding:10px;
     display:flex;
     flex-wrap: wrap;
-    column-gap: 20px;
+    column-gap: 15px;
+    row-gap: 15px;
+    justify-content: center;
 }
 
 .section-option{
-    border:1px solid black;
-    border-radius: 5px;
-    padding:10px;
+    border-radius: 10px;
+    padding:20px;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    align-items: center;
+    background-image: linear-gradient(to bottom, #001220, rgba(35,34,41,255));
+    /* background-color: rgba(35,34,41,255); */
 }
 
 .active{
-    background-color: rgb(121, 121, 166);
+    background-color:#14A943;
+    background-image: none;
 }
 
-.input-box{
+.search-box{
     padding:5px;
-    border-radius: 5px;
-    border:1px solid grey;
-    width:300px;
+    border:none;
+    width:clamp(250px,100%,600px);
+    background-color: rgba(255, 255, 255, 0);
+    outline: none;
+    font-size: 18px;
+    color: white;
 }
+
+ion-icon{
+    font-size: 24px;
+    margin: auto 0px;
+}
+
+.submit-button{
+    margin: auto 0px;
+    height: max-content;
+}
+
+

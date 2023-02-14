@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Better Search</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="./styles.css" rel="stylesheet">
 
     <script>
@@ -40,8 +39,8 @@
                                 temp = "twitter.com";
                                 break;
 
-                            case "Quora":
-                                temp = "quora.com";
+                            case "Github":
+                                temp = "github.com";
                                 break;
                         }
 
@@ -67,6 +66,10 @@
                             
                             case ".docx":
                                 temp = "docx";
+                                break;
+                                
+                            case ".zip":
+                                temp = "zip";
                                 break;
                              
                             case ".pptx":
@@ -102,13 +105,13 @@
                 return uri;
             }
 
-            addEventListener("click", (e)=>{                            //to select boxes
+            document.addEventListener("click", (e)=>{                            //to select boxes
                 if(e.target.classList.contains("section-option")){
                     e.target.classList.toggle("active");            
                 }
             });
 
-            addEventListener("click", (e)=>{
+            document.addEventListener("click", (e)=>{
                 if(e.target.classList.contains("submit-button")){
                     var uri = uri_generator();                          //will collect data and form a url
                     encodeURI(uri);                                     //will encode the url, i.e. replace special chars with escape sequences
@@ -125,17 +128,30 @@
     <div class="body-container">
         <div class="main-container">
             <div class="top">
-                <input type="text" class="input-box" value="" placeholder="Your Search Query">
-                <button type="button" class="btn btn-primary submit-button">Search</button>
+                <ion-icon name="search-outline"></ion-icon>
+                <input type="text" class="search-box" value="" placeholder="Your Search Query">
+                <div class="submit-button"><ion-icon name="arrow-forward-outline"></ion-icon></ion-icon></div>
             </div>
             <div class="middle">
                 <div class="website-input input-section">
                     <div class="section-heading">Website</div>
                     <div class="section-option-area">
-                        <div class="section-option website-option">Reddit</div>
-                        <div class="section-option website-option">Stack Overflow</div>
-                        <div class="section-option website-option">Twitter</div>
-                        <div class="section-option website-option">Quora</div>
+                        <div class="section-option website-option">
+                            <ion-icon name="logo-reddit"></ion-icon>
+                            Reddit
+                        </div>
+                        <div class="section-option website-option">
+                            <ion-icon name="logo-stackoverflow"></ion-icon>
+                            Stack Overflow
+                        </div>
+                        <div class="section-option website-option">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                            Twitter
+                        </div>
+                        <div class="section-option website-option">
+                            <ion-icon name="logo-github"></ion-icon>
+                            Github
+                        </div>
                     </div>
                 </div>
                 <div class="time-input input-section">
@@ -163,6 +179,7 @@
                     <div class="section-option-area">
                         <div class="section-option file-option">.pdf</div>
                         <div class="section-option file-option">.docx</div>
+                        <div class="section-option file-option">.zip</div>
                         <div class="section-option file-option">.pptx</div>
                     </div>
                 </div>
@@ -172,5 +189,7 @@
             </div>
         </div>
     </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
