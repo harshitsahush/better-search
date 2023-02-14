@@ -57,6 +57,10 @@ body{
     display: flex;
     flex-direction: column;
     row-gap: 10px;
+    background-color:rgba(0, 16, 28, 0.6);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    padding: 10px;
 }
 
 .input-section{
@@ -133,5 +137,10 @@ hr{
 a:link, a:visited, a:hover, a:active{
     text-decoration: none;
     color: cyan;
+}
+
+.submit-button:hover{
+    color:#14A943;
+    cursor: pointer;
 }
 
