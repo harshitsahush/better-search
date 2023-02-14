@@ -16,6 +16,9 @@
 
         addEventListener("DOMContentLoaded", ()=>{  
 
+            //to actomatically focus on the search box
+            document.getElementById("main-search-box").focus();
+
             function uri_generator()
             {
                 var uri = "https://www.google.com/search?q=";
@@ -132,7 +135,7 @@
         <div class="main-container">
             <div class="top">
                 <ion-icon name="search-outline"></ion-icon>
-                <input type="text" class="search-box" value="" placeholder="">
+                <input type="text" class="search-box" value="" placeholder="" id="main-search-box">
                 <div class="submit-button"><ion-icon name="arrow-forward-outline"></ion-icon></ion-icon></div>
             </div>
             <div class="middle">

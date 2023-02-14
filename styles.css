@@ -45,7 +45,7 @@ body{
 .middle{
     padding:10px;
     box-sizing: border-box;
-    background-color:rgba(0, 16, 28, 0.2);
+    background-color:rgba(0, 16, 28, 0.4);
     border-radius: 15px;
     margin-top: 30px;
     backdrop-filter: blur(5px);
@@ -134,4 +134,3 @@ a:link, a:visited, a:hover, a:active{
     text-decoration: none;
     color: cyan;
 }
-
