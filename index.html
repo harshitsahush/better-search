@@ -22,6 +22,7 @@
             {
                 var uri = "https://www.google.com/search?q=";
                 var input_string = document.getElementById("main-search-box").value;
+                input_string = input_string.trim();                                  //remove whitespaces at beginning and the end
                 uri = uri+input_string.replace(/ /g, "+");                           //replace all space with "+" and add into url
 
                 var active_parameters = document.getElementsByClassName("active");
@@ -109,12 +110,24 @@
                 return uri;
             }
 
-            /* //to activate options
+            //to activate options
             document.addEventListener("click", (e)=>{
-                if(document.getElementsByClassName("section-option").contains(e.target)){
-                    e.target.classList.toggle("active");            
+                let temp_node = e.target, flag=0;
+                //keep moving to parentnode until either .section-option is found or becomes null
+                while(temp_node != null)
+                {
+                    if(temp_node.classList.contains("section-option"))
+                    {
+                        flag = 1;
+                        break;
+                    }
+                    temp_node = temp_node.parentElement;
                 }
-            }); */
+                if(flag == 1)
+                {
+                    temp_node.classList.toggle("active");
+                }
+            });
 
             //fired on click of search button
             document.addEventListener("click", (e)=>{
@@ -132,8 +145,8 @@
                 }
             });
 
-            //also fire the search function, when enter key is pressed on input field
-            document.getElementById("main-search-box").addEventListener("keydown", (e)=>{
+            //also fire the search function, when enter key is pressed anywhere in the document
+            document.addEventListener("keydown", (e)=>{
                 if(e.code == "Enter")
                 {
                     //will color the search tab red if empty
