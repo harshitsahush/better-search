@@ -119,8 +119,8 @@ body{
     text-align: center;
 }
 
-.section-option:hover{
-    color:#14A943;
+.section-option:hover, .time-option:hover{
+    color:#ff4500;
     transition:all 0.3s;
 }
 
