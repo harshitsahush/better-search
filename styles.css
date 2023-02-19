@@ -119,6 +119,11 @@ body{
     text-align: center;
 }
 
+.section-option:hover{
+    color:#14A943;
+    transition:all 0.3s;
+}
+
 .active{
     background-color:#14A943;
     background-image: none;
